@@ -1,0 +1,31 @@
+{
+  "name": "sentry-node-koa-localvars",
+  "version": "0.0.72",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "build": "rm -rf ./dist; npm --no-git-tag-version version patch; npx tsc -p ./tsconfig.json; npm run sentry-sourcemaps",
+    "start-app": "npm run build; node ./dist/app-basic.js",
+    "sentry-sourcemaps": "npx sentry-cli sourcemaps inject ./dist; npx sentry-cli sourcemaps upload --release=$(npm version --json | jq -r '.\"sentry-node-koa-localvars\"') ./dist",
+    "client-sync": "curl 'http://localhost:3000/error/sync?value=sync-value'",
+    "client-async": "curl 'http://localhost:3000/error/async?value=async-value'"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@sentry/node": "^7.103.0",
+    "@sentry/utils": "^7.103.0",
+    "commander": "^12.0.0",
+    "koa": "^2.15.0",
+    "koa-router": "^12.0.1",
+    "ts-node": "^10.9.2"
+  },
+  "devDependencies": {
+    "@sentry/cli": "^2.30.2",
+    "@types/koa": "^2.15.0",
+    "@types/koa-bodyparser": "^4.3.12",
+    "@types/koa-router": "^7.4.8",
+    "@types/node": "^20.11.27",
+    "typescript": "^5.4.2"
+  }
+}

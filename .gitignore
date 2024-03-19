@@ -1,0 +1,4 @@
+.envrc
+.nvmrc
+node_modules/
+dist/
