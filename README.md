@@ -13,6 +13,10 @@ SENTRY_PROJECT="<name-of-your-sentry-project>"
 SENTRY_AUTH_TOKEN="<auth-token>"
 ```
 
+Install dependencies
+
+`npm install`
+
 Compile TypeScript, generate and upload Sentry sourcemaps and start the server
 
 `npm run start-app`
